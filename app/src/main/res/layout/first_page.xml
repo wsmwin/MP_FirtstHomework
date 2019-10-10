@@ -54,4 +54,12 @@
         android:layout_toRightOf="@+id/btnRegist"
         android:text="로그인" />
 
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRegist"
+        android:layout_marginTop="143dp"
+        android:text="TextView" />
+
 </RelativeLayout>
