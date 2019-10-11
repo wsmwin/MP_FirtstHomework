@@ -17,7 +17,7 @@ public class FirstPage extends AppCompatActivity {
 
     String fileName = "member.txt";
     EditText et_text, et_text2;
-    Button b_write, b_read;
+    Button b_write, b_read, b_viewDB;
     TextView tv_text;
 
 //    TreeMap<String, String> map = new TreeMap<>();
@@ -39,38 +39,36 @@ public class FirstPage extends AppCompatActivity {
         et_text2 = (EditText) findViewById(R.id.etPassword);
         b_write = (Button) findViewById(R.id.btnRegist);
         b_read = (Button) findViewById(R.id.btnLogin);
+        b_viewDB = (Button) findViewById(R.id.btnViewDB);
         tv_text = (TextView) findViewById(R.id.tv_text);
 
+        // 로그인 버튼
         b_read.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 // 로그인 버튼 누를 시 파일 읽어와서 변수에 저장시키고 있나 일치하는 것 있으면 저장.
-                tv_text.setText(readFile(fileName));
+                Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                startActivity(intent);
             }
         });
 
+        // 회원가입 버튼
         b_write.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                // member.txt에 띄어쓰기를 기준으로 회원아이디와 비밀번호 저장.
-                saveFile("member.txt", et_text.getText().toString()+ " " + et_text2.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), SignonPage.class);
                 startActivity(intent);
             }
         });
-    }
 
-    public void saveFile(String file, String text) {
-        try {
-            text += "\n";
-            FileOutputStream fos = openFileOutput(file, Context.MODE_APPEND);
-            fos.write(text.getBytes());
-            fos.close();
-            Toast.makeText(FirstPage.this, "Saved!", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(FirstPage.this, "Error saving file!", Toast.LENGTH_SHORT).show();
-        }
+        // DB 보기 버튼
+        b_viewDB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                // DB 보기 버튼 클릭시 현재 member.txt 파일 저장된 것 보여줌.
+                tv_text.setText(readFile(fileName));
+            }
+        });
     }
 
     public String readFile(String file) {

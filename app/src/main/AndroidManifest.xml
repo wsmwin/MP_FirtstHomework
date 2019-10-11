@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignonPage"></activity>
+        <activity android:name=".MainPage"></activity>
     </application>
 
 </manifest>

@@ -5,28 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:hint="ID"
-        android:id="@+id/etEmail" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <EditText
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="아이디"
+            android:layout_weight="2"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/btn_CheckEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="중복체크" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:hint="Password"
-        android:id="@+id/etPassword" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="비밀번호"
+            android:layout_weight="2"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_checkPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="규칙체크" />
+
+    </LinearLayout>
+
+
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:hint="Name"
+        android:hint="이름"
         android:id="@+id/etName" />
 
     <EditText
@@ -34,7 +68,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:hint="Telephone"
+        android:hint="전화번호"
         android:id="@+id/etTelephone" />
 
     <EditText
@@ -42,7 +76,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:hint="Address"
+        android:hint="주소"
         android:id="@+id/etAddress" />
 
     <LinearLayout
@@ -54,18 +88,31 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_weight="2"
             android:gravity="center"
             android:text="개인정보 사용 동의 간략 약관에 동의하십니까?" />
 
-        <RadioButton
-            android:id="@+id/radioButton"
+        <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/radioPolicy_Dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Decline" />
+
+            <RadioButton
+                android:id="@+id/radioPolicy_Acc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Accept" />
+        </RadioGroup>
 
     </LinearLayout>
 
