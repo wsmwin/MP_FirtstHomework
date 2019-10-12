@@ -27,8 +27,8 @@ public class SignonPage extends Activity {
     Boolean bool_checkEmail, bool_checkPass, bool_policy;
     RadioGroup rg_policy;
 
-    String [] splitMember;
-    String [] memberIDs = new String[100];
+    String[] splitMember;
+    String[] memberIDs = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +56,16 @@ public class SignonPage extends Activity {
         // 아이디 입력이 변경됨에 따라 2자 이상과 중복 체크
         et_Email.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!Pattern.matches("^().{2,20}$", et_Email.getText().toString())){
+                if (!Pattern.matches("^().{2,20}$", et_Email.getText().toString())) {
                     tv_validEmail.setText("2자 이상 입력");
                     bool_checkEmail = false;
                 } else {
@@ -75,16 +77,17 @@ public class SignonPage extends Activity {
         // 비밀번호 입력이 변경됨에 따라 유효성 체크
         et_pass.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
                 // 비밀번호 유효성
-                if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", et_pass.getText().toString()))
-                {
+                if (!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", et_pass.getText().toString())) {
                     tv_validPass.setText("부적합 비밀번호");
                     bool_checkPass = false;
                 } else {
@@ -99,8 +102,8 @@ public class SignonPage extends Activity {
             @Override
             public void onClick(View v) {
                 // member.txt에 띄어쓰기를 기준으로 회원아이디와 비밀번호, 이름, 전화번호, 주소 저장.
-                saveFile("member.txt", et_Email.getText().toString()+ " " + et_pass.getText().toString()
-                        + " " + et_name.getText().toString()+ " " + et_tel.getText().toString()+ " " + et_add.getText().toString());
+                saveFile("member.txt", et_Email.getText().toString() + " " + et_pass.getText().toString()
+                        + " " + et_name.getText().toString() + " " + et_tel.getText().toString() + " " + et_add.getText().toString());
             }
         });
 
@@ -126,14 +129,13 @@ public class SignonPage extends Activity {
             text = new String(buffer);
             // 읽은 텍스트 파일에서 map에 key로 id값을, value로 비밀번호를 넣는다.
             splitMember = text.split("\n");
-            for(int i = 0; i < splitMember.length; i++) {
+            for (int i = 0; i < splitMember.length; i++) {
                 memberIDs[i] = splitMember[i].split(" ")[0];
-                if( memberIDs[i].equals(et_Email.getText().toString())){
+                if (memberIDs[i].equals(et_Email.getText().toString())) {
                     bool_checkEmail = false;
                     tv_validEmail.setText("중복된 아이디");
                     break;
-                }
-                else{
+                } else {
                     bool_checkEmail = true;
                     tv_validEmail.setText("가능한 아이디");
                 }

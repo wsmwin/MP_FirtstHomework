@@ -1,6 +1,7 @@
 package com.example.firtsthomework;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,18 +9,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.FileInputStream;
 import java.util.HashMap;
 
 public class FirstPage extends AppCompatActivity {
 
     String fileName = "member.txt";
-    EditText et_text, et_text2;
-    Button b_write, b_read, b_viewDB;
+    EditText et_Email, et_Pass;
+    Button b_Regist, b_Login, b_viewDB;
     TextView tv_text;
 
     String tempMember = "";
-    String [] splitMember;
+    String[] splitMember;
     HashMap<String, String> map = new HashMap<>();
 
     @Override
@@ -27,43 +29,41 @@ public class FirstPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_page);
 
-        et_text = findViewById(R.id.etEmail);
-        et_text2 = findViewById(R.id.etPassword);
-        b_write = findViewById(R.id.btnRegist);
-        b_read = findViewById(R.id.btnLogin);
+        et_Email = findViewById(R.id.etEmail);
+        et_Pass = findViewById(R.id.etPassword);
+        b_Regist = findViewById(R.id.btnRegist);
+        b_Login = findViewById(R.id.btnLogin);
         b_viewDB = findViewById(R.id.btnViewDB);
         tv_text = findViewById(R.id.tv_text);
 
         // 로그인 버튼
-        b_read.setOnClickListener(new View.OnClickListener(){
+        b_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 파일 읽어온 것에서 변수로 담아서 처리해줄 부분
                 tempMember = readFile(fileName);
                 // 읽은 텍스트 파일에서 map에 key로 id값을, value로 비밀번호를 넣는다.
                 splitMember = tempMember.split("\n");
-                for(int i = 0; i < splitMember.length; i++) {
+                for (int i = 0; i < splitMember.length; i++) {
                     map.put(splitMember[i].split(" ")[0], splitMember[i].split(" ")[1]);
                 }
                 // 아이디와 비밀번호 일치하는지 확인 후 메인 페이지로 넘어가도록 한다. 아니라면 실패 Toast
                 try {
-                    if ( map.get(et_text.getText().toString()).equals(et_text2.getText().toString()) ) {
+                    if (map.get(et_Email.getText().toString()).equals(et_Pass.getText().toString())) {
                         Toast.makeText(FirstPage.this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainPage.class);
                         startActivity(intent);
+                    } else {
+                        Toast.makeText(FirstPage.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(FirstPage.this,"로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                catch(Exception e) {
-                    Toast.makeText(FirstPage.this,"로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(FirstPage.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         // 회원가입 버튼
-        b_write.setOnClickListener(new View.OnClickListener(){
+        b_Regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignonPage.class);
@@ -72,7 +72,7 @@ public class FirstPage extends AppCompatActivity {
         });
 
         // DB 보기 버튼
-        b_viewDB.setOnClickListener(new View.OnClickListener(){
+        b_viewDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(FirstPage.this, "member.txt 파일을 불러왔습니다.", Toast.LENGTH_SHORT).show();

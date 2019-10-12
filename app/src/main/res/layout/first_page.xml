@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnViewDB"
         android:layout_marginTop="22dp"
-        android:text="TextView" />
+        android:text="" />
 
     <Button
         android:id="@+id/btnViewDB"

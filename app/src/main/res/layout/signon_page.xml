@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,18 +15,18 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:ems="10"
             android:hint="아이디"
-            android:layout_weight="2"
             android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/validEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
-            android:hint="중복 체크중"
-            android:layout_weight="1"/>
+            android:hint="중복 체크중" />
 
     </LinearLayout>
 
@@ -40,46 +40,45 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:ems="10"
             android:hint="비밀번호"
-            android:layout_weight="2"
             android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/validPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
-            android:hint="규칙 체크중"
-            android:layout_weight="1"/>
+            android:hint="규칙 체크중" />
 
     </LinearLayout>
 
 
-
     <EditText
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         android:ems="10"
         android:hint="이름"
-        android:id="@+id/etName" />
+        android:inputType="text" />
 
     <EditText
+        android:id="@+id/etTelephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         android:ems="10"
         android:hint="전화번호"
-        android:id="@+id/etTelephone" />
+        android:inputType="text" />
 
     <EditText
+        android:id="@+id/etAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         android:ems="10"
         android:hint="주소"
-        android:id="@+id/etAddress" />
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -120,24 +119,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnDone"
-            android:text="가입"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="가입" />
 
         <Button
             android:id="@+id/btnCancel"
-            android:text="취소"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소" />
 
     </LinearLayout>
 
