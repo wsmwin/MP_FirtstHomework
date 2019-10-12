@@ -20,12 +20,13 @@
             android:layout_weight="2"
             android:inputType="textEmailAddress" />
 
-        <Button
-            android:id="@+id/btn_CheckEmail"
+        <TextView
+            android:id="@+id/validEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="중복체크" />
+            android:ems="10"
+            android:hint="중복 체크중"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -44,12 +45,13 @@
             android:layout_weight="2"
             android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/btn_checkPass"
+        <TextView
+            android:id="@+id/validPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="규칙체크" />
+            android:ems="10"
+            android:hint="규칙 체크중"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -94,6 +96,7 @@
             android:text="개인정보 사용 동의 간략 약관에 동의하십니까?" />
 
         <RadioGroup
+            android:id="@+id/radioPolicy"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1">
